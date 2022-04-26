@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 import React from "react";
 import { Button, Col, Container, Nav, Navbar } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
+=======
+import React from 'react'
+import { Link } from 'react-router-dom'
+import './Navbar.css'
 
 function NavBar() {
   const history = useHistory();
