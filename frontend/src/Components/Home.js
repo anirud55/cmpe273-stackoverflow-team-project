@@ -19,7 +19,7 @@ function Home() {
       QuestionAnswerCount: 3,
       QuestionLastAskedOrModified: "21",
       QuestionTags: ["python", "list", "nested-lists"],
-      QuestionModifiedBy: "Vineet",
+      QuestionModifiedBy: "Vineet"
     },
     {
       _id: 2,
