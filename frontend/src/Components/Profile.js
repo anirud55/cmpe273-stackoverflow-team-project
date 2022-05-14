@@ -11,7 +11,6 @@ import ProfileMain from "./ProfileMain";
 import ProfileActivity from "./ProfileActivity";
 import ProfileEdit from "./ProfileEdit";
 import Navbar from "./Navbar";
-import axios from "axios";
 import { API } from "../../src/backend";
 
 const Profile = () => {
@@ -50,15 +49,13 @@ const Profile = () => {
       .catch((err) => console.log(err));
   };
 
-  const body = JSON.stringify({ user_id: 3 });
-
   const getBadges = async () => {
-    return await fetch("http://localhost:8080/api/badges", {
-      method: "GET",
-      params: body,
-    })
+    return await fetch(`${API}/badges/${profileid}`, { method: "GET" })
       .then((response) => response.text())
-      .then((result) => console.log(result))
+      .then((result) => {
+        console.log(result);
+        setBadges(result);
+      })
       .catch((error) => console.log("error", error));
   };
 
@@ -216,9 +213,9 @@ const Profile = () => {
               <br />
               <Row>
                 {flag === "profile" ? (
-                  <ProfileMain user={userData} />
+                  <ProfileMain user={userData} badges={badges} />
                 ) : flag === "activity" ? (
-                  <ProfileActivity user={userData} />
+                  <ProfileActivity user={userData} badges={badges} />
                 ) : (
                   <ProfileEdit user={userData} />
                 )}
